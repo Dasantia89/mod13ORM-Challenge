@@ -16,13 +16,11 @@ Product.init(
       primaryKey: true,
       autoIncrement: true,
     },
- 
     // define columns
-    product_Name: {
+    product_name: {
       type: DataTypes.STRING,
       allowNull: false,
-    }
-  ,
+    },
     // define columns
     price: {
       type: DataTypes.DECIMAL,
