@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
   // be sure to include its associated Products
   try {
     const categoryData = await Category.findAll({
-      include: [{ model: Category }, {model: Product}],
+      include: [{model: Product}],
     });
     res.status(200).json(categoryData);
   } catch (err) {
@@ -20,9 +20,9 @@ router.get('/:id', async (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
   try {
-    const categoryData = await Reader.findByPk(req.params.id, {
+    const categoryData = await Category.findByPk(req.params.id, {
       // Add Book as a second model to JOIN with
-      include: [{ model: Category }, {model: Product}],
+      include: [{model: Product}],
     });
 
     if (!categoryData) {
@@ -49,7 +49,7 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   // update a category by its `id` value
   try {
-    const categoryData = await Category.update({ category_id: req.body }, {
+    const categoryData = await Category.update({ category_name: req.body.category_name }, {
       where: {
         id: req.params.id
       }
